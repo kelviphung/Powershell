@@ -12,18 +12,19 @@
     }
 # Identity Computer as such format AACVP 
 ## Check type asset 
-``Function check_type
-{
-    $type = $false
-    if(Get-WmiObject -Class win32_systemenclosure | 
-        Where-Object { $_.chassistypes -eq 8 -or $_.chassistypes -eq 9 -or $_.chassistypes -eq 10 -or $_.chassistypes -eq 14 -or $_.chassistypes -eq 30})
+    Function check_type
+       {
+        $type = $false
+          if(Get-WmiObject -Class win32_systemenclosure | 
+          Where-Object { $_.chassistypes -eq 8 -or $_.chassistypes -eq 9 -or $_.chassistypes -eq 10 -or $_.chassistypes -eq 14 -or $_.chassistypes -eq 30})
+          {
+            return "LW"
+          }
+            Else
         {
-        return "LW"
+           return "DW"
         }
-        Else
-        {
-        return "DW"
-        }}
+      }
 $c_host=check_type``
 # Check serial number if great than 6 charter get last 6 charter, if serialnumber is empty input into "" 
 ``$SerialNumber = (Get-WmiObject -class win32_bios).SerialNumber``
