@@ -12,7 +12,7 @@ Get-LocalUser | Where-Object {$_.Name -eq "Administrator"} | ForEach-Object {
 }``
 # Identity Computer as such format AACVP 
 ## Check type asset 
-``Function check_type
+~~~``Function check_type
 {
     $type = $false
     if(Get-WmiObject -Class win32_systemenclosure | 
