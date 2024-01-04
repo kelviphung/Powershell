@@ -5,10 +5,10 @@
     Get-LocalUser | Where-Object {$_.Name -eq "Administrator"} | ForEach-Object {
     if ($_.Enabled -eq $true) {
     Write-Output " Local Administrator account already exists."
-    } else {
+     } else {
     $_ | Enable-LocalUser
     $_ | Set-LocalUser -Password $pwd
-    }
+     }
     }
 # Identity Computer as such format AACVP 
 ## Check type asset 
