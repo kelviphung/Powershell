@@ -1,7 +1,7 @@
-# Powershell
-# The script is written by Phung Hoa for to work. When copying or using for personal purposes, please cite the author's copyright.
-# Active account administrator and setpassword  
-$pwd = Read-Host " Input your password in here"  -AsSecureString
+***
+# The script create by Kelvin Phung from AAC to work . When copying or using for personal purposes, please cite the author's copyright.
+# Active account administrator and set password  
+``$pwd = Read-Host " Input your password in here"  -AsSecureString
 Get-LocalUser | Where-Object {$_.Name -eq "Administrator"} | ForEach-Object {
     if ($_.Enabled -eq $true) {
     Write-Output " Local Administrator account already exists."
@@ -9,9 +9,10 @@ Get-LocalUser | Where-Object {$_.Name -eq "Administrator"} | ForEach-Object {
     $_ | Enable-LocalUser
     $_ | Set-LocalUser -Password $pwd
     }
-}
+}``
 # Identity Computer as such format AACVP 
-Function check_type
+## Check type asset 
+``Function check_type
 {
     $type = $false
     if(Get-WmiObject -Class win32_systemenclosure | 
@@ -23,31 +24,32 @@ Function check_type
         {
         return "DW"
         }}
-$c_host=check_type
-# Check serial number if great than 6 charter get last 6 charter, if serinumber empty input into "" 
-$SerialNumber = (Get-WmiObject -class win32_bios).SerialNumber
-# get os ver
-$os= [System.Environment]::OSVersion.Version.Major
+$c_host=check_type``
+# Check serial number if great than 6 charter get last 6 charter, if serialnumber is empty input into "" 
+``$SerialNumber = (Get-WmiObject -class win32_bios).SerialNumber``
+# Get os ver
+``$os= [System.Environment]::OSVersion.Version.Major``
 # Input location
-$Title = "Asset location"
-$Message = "Select from the list below your asset location?"
+``$Title = "Asset location"``
+``$Message = "Select from the list below your asset location?"``
 
-$VP = New-Object System.Management.Automation.Host.ChoiceDescription "&Vĩnh Phúc"
-$BN = New-Object System.Management.Automation.Host.ChoiceDescription "&Bắc Ninh"
+``$VP = New-Object System.Management.Automation.Host.ChoiceDescription "&Vĩnh Phúc"``
+``$BN = New-Object System.Management.Automation.Host.ChoiceDescription "&Bắc Ninh"``
 
-$loc = [System.Management.Automation.Host.ChoiceDescription[]]($VP, $BN)
+``$loc = [System.Management.Automation.Host.ChoiceDescription[]]($VP, $BN)``
 
-$result = $host.ui.PromptForChoice($Title, $Message, $loc, 1)
+``$result = $host.ui.PromptForChoice($Title, $Message, $loc, 1)``
 
-Switch($result)
+``Switch($result)
 {
    0 {  $l_host= "APAVP" }
    1 { $l_host= "APAVN" }
 }
-$l_host
+$l_host``
 # string new host name
-$n_host= $c_host+$os+$l_host+$SerialNumber.Substring($SerialNumber.Length -6)
+`$n_host= $c_host+$os+$l_host+$SerialNumber.Substring($SerialNumber.Length -6)`
 $n_host=[string]$n_host
 # Join Computer to Domain.
-$old_host=hostname
-Add-Computer -DomainName aac.com -ComputerName $old_host -NewName $n_host -Restart
+`$old_host=hostname
+Add-Computer -DomainName aac.com -ComputerName $old_host -NewName $n_host -Restart`
+# This is ps1 file [Auto SetHostName ](https://drive.google.com/file/d/1uc1vKgyTPRgZ60aQm5Z9gAy87h3rKPAi/view?usp=drive_link)
