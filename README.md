@@ -9,7 +9,7 @@
     $_ | Enable-LocalUser
     $_ | Set-LocalUser -Password $pwd
     }
-}~~~
+    }
 # Identity Computer as such format AACVP 
 ## Check type asset 
 ``Function check_type
