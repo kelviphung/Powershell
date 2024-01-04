@@ -1,4 +1,3 @@
-***
 # The script create by Kelvin Phung from AAC to work . When copying or using for personal purposes, please cite the author's copyright.
 # Active account administrator and set password.  
     $pwd = Read-Host " Input your password in here"  -AsSecureString
