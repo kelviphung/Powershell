@@ -1,7 +1,7 @@
 ***
 # The script create by Kelvin Phung from AAC to work . When copying or using for personal purposes, please cite the author's copyright.
 # Active account administrator and set password  
-``$pwd = Read-Host " Input your password in here"  -AsSecureString
+~~~$pwd = Read-Host " Input your password in here"  -AsSecureString
 Get-LocalUser | Where-Object {$_.Name -eq "Administrator"} | ForEach-Object {
     if ($_.Enabled -eq $true) {
     Write-Output " Local Administrator account already exists."
@@ -48,7 +48,7 @@ $c_host=check_type``
 $l_host``
 # Make new hostname
 ``$n_host= $c_host+$os+$l_host+$SerialNumber.Substring($SerialNumber.Length -6)``
-~~~$n_host=[string]$n_host
+$n_host=[string]$n_host
 # Join Computer to Domain.
 ``$old_host=hostname``
 ``Add-Computer -DomainName aac.com -ComputerName $old_host -NewName $n_host -Restart``
