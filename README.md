@@ -26,9 +26,9 @@
       }
      $c_host=check_type
 # Check serial number if great than 6 charter get last 6 charter, if serialnumber is empty input into "".
-    $SerialNumber = (Get-WmiObject -class win32_bios).SerialNumber``
+    $SerialNumber = (Get-WmiObject -class win32_bios).SerialNumber
 # Get os ver.
-    $os= [System.Environment]::OSVersion.Version.Major``
+    $os= [System.Environment]::OSVersion.Version.Major
 # Input location.
     $Title = "Asset location"
     $Message = "Select from the list below your asset location?"
