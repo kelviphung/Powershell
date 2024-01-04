@@ -46,9 +46,9 @@ $c_host=check_type``
    1 { $l_host= "APAVN" }
 }
 $l_host``
-# string new host name
+# Make new hostname
 ``$n_host= $c_host+$os+$l_host+$SerialNumber.Substring($SerialNumber.Length -6)``
-[$n_host=[string]$n_host]
+~~~$n_host=[string]$n_host
 # Join Computer to Domain.
 ``$old_host=hostname``
 ``Add-Computer -DomainName aac.com -ComputerName $old_host -NewName $n_host -Restart``
