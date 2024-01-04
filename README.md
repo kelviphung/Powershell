@@ -1,6 +1,6 @@
 ***
 # The script create by Kelvin Phung from AAC to work . When copying or using for personal purposes, please cite the author's copyright.
-# Active account administrator and set password  
+# Active account administrator and set password.  
     $pwd = Read-Host " Input your password in here"  -AsSecureString
     Get-LocalUser | Where-Object {$_.Name -eq "Administrator"} | ForEach-Object {
     if ($_.Enabled -eq $true) {
@@ -10,7 +10,7 @@
        $_ | Set-LocalUser -Password $pwd
      }
     }
-# Identity Computer as such format AACVP 
+# Identity Computer as such format AACVP.
 ## Check type asset 
     Function check_type
        {
@@ -26,11 +26,11 @@
         }
       }
      $c_host=check_type
-# Check serial number if great than 6 charter get last 6 charter, if serialnumber is empty input into "" 
+# Check serial number if great than 6 charter get last 6 charter, if serialnumber is empty input into "".
     $SerialNumber = (Get-WmiObject -class win32_bios).SerialNumber``
-# Get os ver
+# Get os ver.
     $os= [System.Environment]::OSVersion.Version.Major``
-# Input location
+# Input location.
     $Title = "Asset location"
     $Message = "Select from the list below your asset location?"
     $VP = New-Object System.Management.Automation.Host.ChoiceDescription "&Vĩnh Phúc"
@@ -43,7 +43,7 @@
            1 { $l_host= "APAVN" }
          }
          $l_host
-# Make new hostname
+# Make new hostname.
     $n_host= $c_host+$os+$l_host+$SerialNumber.Substring($SerialNumber.Length -6)
     $n_host=[string]$n_host
 # Join Computer to Domain.
