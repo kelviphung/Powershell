@@ -1,5 +1,5 @@
 ***
-# The script create by Kelvin Phung from AAC to work . When copying or using for personal purposes, please cite the author's copyright.
+<p># The script create by Kelvin Phung from AAC to work . When copying or using for personal purposes, please cite the author's copyright.
 # Active account administrator and set password  
 ~~~$pwd = Read-Host " Input your password in here"  -AsSecureString
 Get-LocalUser | Where-Object {$_.Name -eq "Administrator"} | ForEach-Object {
@@ -52,4 +52,4 @@ $n_host=[string]$n_host
 # Join Computer to Domain.
 ``$old_host=hostname``
 ``Add-Computer -DomainName aac.com -ComputerName $old_host -NewName $n_host -Restart``
-# This is ps1 file [Auto SetHostName ](https://drive.google.com/file/d/1uc1vKgyTPRgZ60aQm5Z9gAy87h3rKPAi/view?usp=drive_link)
+# This is ps1 file [Auto SetHostName ](https://drive.google.com/file/d/1uc1vKgyTPRgZ60aQm5Z9gAy87h3rKPAi/view?usp=drive_link)</p>
