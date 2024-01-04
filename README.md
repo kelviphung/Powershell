@@ -47,9 +47,9 @@ $c_host=check_type``
 }
 $l_host``
 # string new host name
-`$n_host= $c_host+$os+$l_host+$SerialNumber.Substring($SerialNumber.Length -6)`
+``$n_host= $c_host+$os+$l_host+$SerialNumber.Substring($SerialNumber.Length -6)``
 $n_host=[string]$n_host
 # Join Computer to Domain.
-`$old_host=hostname
-Add-Computer -DomainName aac.com -ComputerName $old_host -NewName $n_host -Restart`
+``$old_host=hostname``
+``Add-Computer -DomainName aac.com -ComputerName $old_host -NewName $n_host -Restart``
 # This is ps1 file [Auto SetHostName ](https://drive.google.com/file/d/1uc1vKgyTPRgZ60aQm5Z9gAy87h3rKPAi/view?usp=drive_link)
