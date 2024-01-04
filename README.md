@@ -25,32 +25,28 @@
            return "DW"
         }
       }
-$c_host=check_type``
+     $c_host=check_type
 # Check serial number if great than 6 charter get last 6 charter, if serialnumber is empty input into "" 
-``$SerialNumber = (Get-WmiObject -class win32_bios).SerialNumber``
+    $SerialNumber = (Get-WmiObject -class win32_bios).SerialNumber``
 # Get os ver
-``$os= [System.Environment]::OSVersion.Version.Major``
+    $os= [System.Environment]::OSVersion.Version.Major``
 # Input location
-``$Title = "Asset location"``
-``$Message = "Select from the list below your asset location?"``
-
-``$VP = New-Object System.Management.Automation.Host.ChoiceDescription "&Vĩnh Phúc"``
-``$BN = New-Object System.Management.Automation.Host.ChoiceDescription "&Bắc Ninh"``
-
-``$loc = [System.Management.Automation.Host.ChoiceDescription[]]($VP, $BN)``
-
-``$result = $host.ui.PromptForChoice($Title, $Message, $loc, 1)``
-
-``Switch($result)
-{
-   0 {  $l_host= "APAVP" }
-   1 { $l_host= "APAVN" }
-}
-$l_host``
+    $Title = "Asset location"
+    $Message = "Select from the list below your asset location?"
+    $VP = New-Object System.Management.Automation.Host.ChoiceDescription "&Vĩnh Phúc"
+    $BN = New-Object System.Management.Automation.Host.ChoiceDescription "&Bắc Ninh"
+    $loc = [System.Management.Automation.Host.ChoiceDescription[]]($VP, $BN)``
+    $result = $host.ui.PromptForChoice($Title, $Message, $loc, 1)
+       Switch($result)
+         {
+           0 {  $l_host= "APAVP" }
+           1 { $l_host= "APAVN" }
+         }
+         $l_host
 # Make new hostname
-``$n_host= $c_host+$os+$l_host+$SerialNumber.Substring($SerialNumber.Length -6)``
-$n_host=[string]$n_host
+    $n_host= $c_host+$os+$l_host+$SerialNumber.Substring($SerialNumber.Length -6)
+    $n_host=[string]$n_host
 # Join Computer to Domain.
-``$old_host=hostname``
-``Add-Computer -DomainName aac.com -ComputerName $old_host -NewName $n_host -Restart``
+    $old_host=hostname
+    Add-Computer -DomainName aac.com -ComputerName $old_host -NewName $n_host -Restart
 # This is ps1 file [Auto SetHostName ](https://drive.google.com/file/d/1uc1vKgyTPRgZ60aQm5Z9gAy87h3rKPAi/view?usp=drive_link)
