@@ -6,8 +6,8 @@
     if ($_.Enabled -eq $true) {
     Write-Output " Local Administrator account already exists."
      } else {
-    $_ | Enable-LocalUser
-    $_ | Set-LocalUser -Password $pwd
+       $_ | Enable-LocalUser
+       $_ | Set-LocalUser -Password $pwd
      }
     }
 # Identity Computer as such format AACVP 
